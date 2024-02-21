@@ -71,7 +71,7 @@ export function App() {
 
       <main className="flex flex-1 flex-col items-center justify-center px-4 text-center">
         <h1 className="font-sans text-6xl font-bold">
-          <div className={`font-rhr text-red-rhr`}><p style="color: f95c0b">{formData.page_title}</p></div>
+          <div className={`font-rhr text-red-rhr`}>{formData.page_title}</div>
         </h1>
         <QRModal
           show={showQR}
@@ -95,7 +95,7 @@ export function App() {
               >
                 Commit
               </button>
-              <pr></pr><pr></pr>
+              <p></p>DON'T HIT RESET UNTIL THE QR CODE HAS BEEN SCANNED!!<p></p>
               <button
                 className="focus:shadow-outline mx-2 my-6 rounded border border-red-rhr bg-white py-2 font-bold uppercase text-red-rhr hover:bg-red-200 focus:outline-none dark:bg-gray-500 dark:text-white dark:hover:bg-gray-700"
                 type="button"
