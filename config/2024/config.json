@@ -141,20 +141,7 @@
           },
           "defaultValue": " "
         },
-        {
-          "title": "Harmony",
-          "type": "select",
-          "required": true,
-          "code": "harm",
-          "choices": {
-            "Not": "Not Completed",
-            "Fir": "First on Chain",
-            "Sec": "Second on Chain",
-            "Thir": "Third on Chain"
-          },
-          "defaultValue": "Not Completed"
-        },
-		{
+	{
           "title": "Note in Trap",
           "type": "select",
           "required": true,
