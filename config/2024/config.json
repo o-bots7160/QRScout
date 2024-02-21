@@ -9,16 +9,23 @@
       "fields": [
         {
           "title": "Scouter Initials",
-          "type": "text",
+		  "type": "text",
           "required": true,
           "code": "scouter"
         },
         {
           "title": "Match Number",
-          "type": "number",
+		  "type": "number",
+		  "min": 0,
           "required": true,
           "code": "matchNumber"
-        },
+        }
+      ]
+    },
+	{
+      "name": "",
+	  "preserveDataOnReset": false,
+      "fields": [
 	{
           "title": "Team Number",
           "type": "number",
