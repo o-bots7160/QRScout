@@ -1,7 +1,7 @@
 {
   "$schema": "../schema.json",
   "title": "QRScout",
-  "page_title": "Crescendo",
+  "page_title": "O-bots!",
   "sections": [
     {
       "name": "Prematch",
@@ -9,19 +9,26 @@
       "fields": [
         {
           "title": "Scouter Initials",
-          "type": "text",
+		  "type": "text",
           "required": true,
           "code": "scouter"
         },
         {
           "title": "Match Number",
-          "type": "number",
+		  "type": "number",
+		  "min": 0,
           "required": true,
           "code": "matchNumber"
-        },
+        }
+      ]
+    },
+	{
+      "name": "",
+	  "preserveDataOnReset": false,
+      "fields": [
         {
           "title": "Robot",
-          "type": "select",
+		  "type": "select",
           "required": true,
           "code": "robot",
           "choices": {
@@ -36,9 +43,13 @@
         },
         {
           "title": "Team Number",
-          "type": "number",
-          "required": true,
-          "code": "teamNumber"
+		  "type": "text",
+		  "min": 0,
+		  "max": 5,
+		  "required": true,
+		  "code": "teamNumber"
+		       
+		  
         },
         {
           "title": "Human Player at Amp",
@@ -60,7 +71,7 @@
       "name": "Autonomous",
       "fields": [
         {
-          "title": "Mobility?",
+          "title": "Mobility",
           "type": "boolean",
           "defaultValue": false,
           "required": false,
@@ -75,24 +86,8 @@
           "required": false
         },
         {
-          "code": "auampm",
-          "title": "Amp Missed",
-          "type": "counter",
-          "defaultValue": 0,
-          "min": 0,
-          "required": false
-        },
-        {
           "code": "ausc",
           "title": "Speaker Scored",
-          "type": "counter",
-          "defaultValue": 0,
-          "min": 0,
-          "required": false
-        },
-        {
-          "code": "auskpm",
-          "title": "Speaker Missed",
           "type": "counter",
           "defaultValue": 0,
           "min": 0,
@@ -111,13 +106,7 @@
     {
       "name": "Teleop",
       "fields": [
-        {
-          "code": "tcoop",
-          "title": "Coopertition",
-          "type": "boolean",
-          "defaultValue": false,
-          "required": false
-        },
+        
         {
           "code": "tamps",
           "title": "Amp Scored",
@@ -127,24 +116,8 @@
           "required": false
         },
         {
-          "code": "tampm",
-          "title": "Amp Missed",
-          "type": "counter",
-          "defaultValue": 0,
-          "min": 0,
-          "required": false
-        },
-        {
           "code": "tsc",
           "title": "Speaker Scored",
-          "type": "counter",
-          "defaultValue": 0,
-          "min": 0,
-          "required": false
-        },
-        {
-          "code": "tsm",
-          "title": "Speaker Missed",
           "type": "counter",
           "defaultValue": 0,
           "min": 0,
@@ -212,6 +185,7 @@
             "3": "Very Effective",
             "x": "Not Observed"
           },
+		  "defaultValue": "x",
           "required": false
         },
         {
