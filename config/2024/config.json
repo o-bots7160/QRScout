@@ -136,8 +136,8 @@
           "code": "epo",
           "choices": {
             "No": "No Climb",
-            "P": "Parked",
-            "Hg": "Hanged"            
+            "Parked": "Parked",
+            "Hanged": "Hanged"            
           },
           "defaultValue": " "
         },
@@ -162,9 +162,8 @@
           "title": "Offense Skill",
           "type": "select",
           "choices": {
-            "1": "Not Effective",
-            "2": "Average",
-            "3": "Very Effective"
+            "Not Effective": "Not Effective",
+            "Very Effective": "Very Effective"
           },
 		  "defaultValue": "x",
           "required": false
@@ -174,9 +173,8 @@
           "title": "Defense Skill",
           "type": "select",
           "choices": {
-            "1": "Not Effective",
-            "2": "Average",
-            "3": "Very Effective"
+            "Not Effective": "Not Effective",
+            "Very Effective": "Very Effective"
           },
           "defaultValue": "x",
           "required": false
