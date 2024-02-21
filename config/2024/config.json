@@ -4,7 +4,7 @@
   "page_title": "O-bots!",
   "sections": [
     {
-      "name": "Prematch!",
+      "name": "Prematch",
       "preserveDataOnReset": true,
       "fields": [
         {
