@@ -95,6 +95,7 @@ export function App() {
               >
                 Commit
               </button>
+              <br></br><br></br>
               <button
                 className="focus:shadow-outline mx-2 my-6 rounded border border-red-rhr bg-white py-2 font-bold uppercase text-red-rhr hover:bg-red-200 focus:outline-none dark:bg-gray-500 dark:text-white dark:hover:bg-gray-700"
                 type="button"
@@ -118,23 +119,7 @@ export function App() {
               >
                 Copy Column Names
               </Button>
-             <!-- <Button
-                variant={Variant.Secondary}
-                onClick={() => downloadConfig()}
-              >
-               
-                Download Config
-              </Button>
-               -->
-              <label className="mx-2 flex cursor-pointer flex-row justify-center rounded bg-gray-500 py-2 text-center font-bold text-white shadow-sm hover:bg-gray-600">
-                <span className="text-base leading-normal">Upload Config</span>
-                <input
-                  type="file"
-                  className="hidden"
-                  accept=".json"
-                  onChange={e => uploadConfig(e)}
-                />
-              </label>
+             
               <div className="mx-2 flex flex-col justify-start bg-gray-500 p-2 rounded">
                 <div className="rounded-t pb-2 text-left font-bold text-white">
                   Theme
