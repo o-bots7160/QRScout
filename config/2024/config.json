@@ -15,8 +15,8 @@
         },
         {
           "title": "Match Number",
-	  "type": "text",
-	  "min": 2,
+	  "type": "number",
+	  "min": 0,
           "required": true,
           "code": "matchNumber"
         }
@@ -28,7 +28,7 @@
       "fields": [
 	{
           "title": "Team Number",
-          "type": "number",
+          "type": "text",
           "required": true,
           "code": "teamNumber"
         }
