@@ -106,6 +106,7 @@ export function App() {
               </button>
             </div>
             <div className="mb-4 flex flex-col justify-center rounded bg-white shadow-md dark:bg-gray-600 gap-2 p-2">
+              <div className="hidden">
               <Button
                 variant={Variant.Secondary}
                 onClick={() =>
@@ -135,6 +136,7 @@ export function App() {
                   onChange={e => uploadConfig(e)}
                 />
               </label>
+                </div>
               <div className="mx-2 flex flex-col justify-start bg-gray-500 p-2 rounded">
                 <div className="rounded-t pb-2 text-left font-bold text-white">
                   Theme
