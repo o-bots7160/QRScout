@@ -95,9 +95,7 @@ export function App() {
               >
                 Commit
               </button>
-              <br></br>
-              DON'T HIT RESET UNLESS THE QR CODE HAS BEEN SCANNED!!
-              <button 
+              <button
                 className="focus:shadow-outline mx-2 my-6 rounded border border-red-rhr bg-white py-2 font-bold uppercase text-red-rhr hover:bg-red-200 focus:outline-none dark:bg-gray-500 dark:text-white dark:hover:bg-gray-700"
                 type="button"
                 onClick={() => resetSections()}
@@ -106,7 +104,6 @@ export function App() {
               </button>
             </div>
             <div className="mb-4 flex flex-col justify-center rounded bg-white shadow-md dark:bg-gray-600 gap-2 p-2">
-              <div className="hidden">
               <Button
                 variant={Variant.Secondary}
                 onClick={() =>
@@ -136,7 +133,6 @@ export function App() {
                   onChange={e => uploadConfig(e)}
                 />
               </label>
-                </div>
               <div className="mx-2 flex flex-col justify-start bg-gray-500 p-2 rounded">
                 <div className="rounded-t pb-2 text-left font-bold text-white">
                   Theme
@@ -171,11 +167,9 @@ export function App() {
         </form>
       </main>
       <footer>
-        <div className="hidden">
-          <div className="mt-8 flex h-24 flex-col items-center justify-center p-2">
-            <Logo />
-          </div>
-        </div>  
+        <div className="mt-8 flex h-24 flex-col items-center justify-center p-2">
+          <Logo />
+        </div>
       </footer>
     </div>
   );
