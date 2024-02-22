@@ -75,7 +75,7 @@ export function App() {
         </h1>
         <QRModal
           show={showQR}
-          title={`${getFieldValue('matchNumber')} - ${getFieldValue('teamNumber')}`}
+          title={`${getFieldValue('robot')} - ${getFieldValue('matchNumber')}`}
           data={getQRCodeData()}
           onDismiss={() => setShowQR(false)}
         />
