@@ -171,9 +171,11 @@ export function App() {
         </form>
       </main>
       <footer>
-        <div className="mt-8 flex h-24 flex-col items-center justify-center p-2">
-          <Logo />
-        </div>
+        <div className="hidden">
+          <div className="mt-8 flex h-24 flex-col items-center justify-center p-2">
+            <Logo />
+          </div>
+        </div>  
       </footer>
     </div>
   );
