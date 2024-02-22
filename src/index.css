@@ -5,6 +5,9 @@
 body {
   overscroll-behavior: contain;
 }
+.button:active {
+    background-color: #ffbf00;
+}
 
 @font-face {
   font-family: 'SF Sports Night';
