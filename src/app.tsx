@@ -75,7 +75,7 @@ export function App() {
         </h1>
         <QRModal
           show={showQR}
-          title={`${getFieldValue('matchNumber')} - ${getFieldValue('teamNumber')}`}
+          title={`M#:${getFieldValue('matchNumber')} - T#:${getFieldValue('teamNumber')}`}
           data={getQRCodeData()}
           onDismiss={() => setShowQR(false)}
         />
