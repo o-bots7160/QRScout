@@ -70,8 +70,8 @@ export function App() {
       </head>
 
       <main className="flex flex-1 flex-col items-center justify-center px-4 text-center">
-        <h1 className="font-sans text-6xl font-bold">
-          <div className={`font-rhr text-red-rhr`}>{formData.page_title}</div>
+        <h1 className="font-sans text-6xl font-bold" style="color: #f95c0b">
+          <div className={`font-rhr`}>{formData.page_title}</div>
         </h1>
         <QRModal
           show={showQR}
