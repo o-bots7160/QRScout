@@ -13,7 +13,7 @@ export default function SelectInput(data: SelectInputProps) {
   }
   return (
     <select
-      style="font-size:120%"
+      style="font-size:150%"
       className="w-full rounded bg-white px-4 py-2 dark:bg-gray-700 dark:text-white"
       name={data.title}
       id={data.title}
