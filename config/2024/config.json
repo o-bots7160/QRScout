@@ -1,7 +1,7 @@
 {
   "$schema": "../schema.json",
   "title": "QRScout",
-  "page_title": "7160 O-BOTS!",
+  "page_title": "7160 O-BOTS",
   "sections": [
     {
       "name": "Prematch",
@@ -28,7 +28,7 @@
       "fields": [
 	{
           "title": "Team Number",
-          "type": "text",
+          "type": "number",
           "required": true,
           "code": "teamNumber"
         }
@@ -124,9 +124,10 @@
           "type": "select",
           "choices": {
             "Not Effective": "Not Effective",
+	    "Effective": "Effective",
             "Very Effective": "Very Effective"
           },
-		  "defaultValue": "x",
+	  "defaultValue": "x",
           "required": false
         },
         {
@@ -135,6 +136,7 @@
           "type": "select",
           "choices": {
             "Not Effective": "Not Effective",
+	    "Effective": "Effective",
             "Very Effective": "Very Effective"
           },
           "defaultValue": "x",
