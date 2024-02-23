@@ -2,7 +2,6 @@
   "name": "qrscout",
   "private": true,
   "version": "2.0.0",
-  "homepage": "https://o-bots7160.github.io/QRScout/",
   "type": "module",
   "scripts": {
     "dev": "vite",
