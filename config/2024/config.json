@@ -95,9 +95,9 @@
           "required": true,
           "code": "epo",
           "choices": {
-            "No": "No Climb",
-            "Parked": "Parked",
-            "Hanged": "Hanged"            
+            "No": "None",
+            "Parked": "Park",
+            "Hanged": "Hang"            
           },
           "defaultValue": " "
         },
