@@ -20,7 +20,7 @@
 	  "type": "number",
 	  "min": 0,
           "required": true,
-	  "preserveDataOnReset": true,
+	  "preserveDataOnReset": false,
           "code": "matchNumber"
         },
 	{  
@@ -79,6 +79,14 @@
         {
           "code": "tsc",
           "title": "Speaker Scored",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "required": false
+        },
+	 {
+          "code": "rel",
+          "title": "Notes Relayed",
           "type": "counter",
           "defaultValue": 0,
           "min": 0,
