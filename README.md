@@ -15,11 +15,11 @@ TODO: Add button options for config file
 
 /src/store/store.ts
 
-	Change line 3 to the new year
+	Change line 3 to the new year.
 
 Add a new folder in /config for your new season
 
-	Copy a previous config.json file into the new folder and start editing
+	Copy a previous config.json file into the new folder and start editing.
 
 
 
