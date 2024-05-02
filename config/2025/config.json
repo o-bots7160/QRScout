@@ -1,0 +1,164 @@
+{
+  "$schema": "../schema.json",
+  "title": "QRScout",
+  "page_title": "7160 O-BOTS Pre 2025",
+  "sections": [
+    {
+      "name": "Prematch",
+      "fields": [
+        {
+          "title": "Scouter Initials",
+	  "type": "text",
+          "required": true,
+	  "min": 0,
+          "max": 5,
+	  "preserveDataOnReset": true,
+          "code": "scouter"
+        },
+        {
+          "title": "Match Number",
+	  "type": "number",
+	  "min": 0,
+          "required": true,
+	  "preserveDataOnReset": false,
+          "code": "matchNumber"
+        },
+	{  
+	  "title": "Team Number",
+          "type": "number",
+	  "min": 0,
+          "required": true,
+	  "preserveDataOnReset": false,
+          "code": "teamNumber"
+        }
+      ]
+    },
+    {
+      "name": "Autonomous",
+      "fields": [
+		{
+          "title": "Line Cross",
+          "type": "select",
+          "required": true,
+          "code": "Mved",
+          "choices": {
+            "Yes": "Yes",
+            "No": "No"
+          },
+          "defaultValue": " "
+        },
+        {
+          "code": "auamp",
+          "title": "Amp Scored",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "required": false
+        },
+        {
+          "code": "ausc",
+          "title": "Speaker Scored",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "Teleop",
+      "fields": [
+        {
+          "code": "tamps",
+          "title": "Amp Scored",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "required": false
+        },
+        {
+          "code": "tsc",
+          "title": "Speaker Scored",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "required": false
+        },
+	 {
+          "code": "rel",
+          "title": "Notes Relayed",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "Endgame",
+      "fields": [
+        {
+          "title": "End Position",
+          "type": "select",
+          "required": true,
+          "code": "epo",
+          "choices": {
+            "No": "None",
+            "Parked": "Park",
+            "Hanged": "Hang"            
+          },
+          "defaultValue": " "
+        },
+	{
+          "title": "Note in Trap",
+          "type": "select",
+          "required": true,
+          "code": "cn",
+          "choices": {
+            "Yes": "Yes",
+            "No": "No"
+          },
+          "defaultValue": " "
+        }
+      ]
+    },
+    {
+      "name": "Postmatch",
+      "fields": [
+        {
+          "code": "or",
+          "title": "Offense Skill",
+          "type": "select",
+          "choices": {
+            "Not Effective": "Not Effective",
+	    "Effective": "Effective",
+            "Very Effective": "Very Effective"
+          },
+	  "defaultValue": "x",
+          "required": false
+        },
+        {
+          "code": "dr",
+          "title": "Defense Skill",
+          "type": "select",
+          "choices": {
+            "Not Effective": "Not Effective",
+	    "Effective": "Effective",
+            "Very Effective": "Very Effective"
+          },
+          "defaultValue": "x",
+          "required": false
+        },
+        {
+          "code": "co",
+          "title": "Comments",
+          "type": "text",
+          "min": 0,
+          "max": 50,
+          "required": false,
+	  "defaultValue": " "
+        }
+      ]
+    }
+  ]
+}
