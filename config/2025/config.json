@@ -1,34 +1,34 @@
 {
   "$schema": "../schema.json",
   "title": "QRScout",
-  "page_title": "7160 O-BOTS",
+  "page_title": "7160 O-BOTS Pre 2025",
   "sections": [
     {
       "name": "Prematch",
       "fields": [
         {
           "title": "Scouter Initials",
-	  "type": "text",
+          "type": "text",
           "required": true,
-	  "min": 0,
+          "min": 0,
           "max": 5,
-	  "preserveDataOnReset": true,
+          "preserveDataOnReset": true,
           "code": "scouter"
         },
         {
           "title": "Match Number",
-	  "type": "number",
-	  "min": 0,
+          "type": "number",
+          "min": 0,
           "required": true,
-	  "preserveDataOnReset": false,
+          "preserveDataOnReset": false,
           "code": "matchNumber"
         },
-	{  
-	  "title": "Team Number",
+        {
+          "title": "Team Number",
           "type": "number",
-	  "min": 0,
+          "min": 0,
           "required": true,
-	  "preserveDataOnReset": false,
+          "preserveDataOnReset": false,
           "code": "teamNumber"
         }
       ]
@@ -36,7 +36,7 @@
     {
       "name": "Autonomous",
       "fields": [
-		{
+        {
           "title": "Line Cross",
           "type": "select",
           "required": true,
@@ -84,7 +84,7 @@
           "min": 0,
           "required": false
         },
-	 {
+        {
           "code": "rel",
           "title": "Notes Relayed",
           "type": "counter",
@@ -105,11 +105,11 @@
           "choices": {
             "No": "None",
             "Parked": "Park",
-            "Hanged": "Hang"            
+            "Hanged": "Hang"
           },
           "defaultValue": " "
         },
-	{
+        {
           "title": "Note in Trap",
           "type": "select",
           "required": true,
@@ -131,10 +131,10 @@
           "type": "select",
           "choices": {
             "Not Effective": "Not Effective",
-	    "Effective": "Effective",
+            "Effective": "Effective",
             "Very Effective": "Very Effective"
           },
-	  "defaultValue": "x",
+          "defaultValue": "x",
           "required": false
         },
         {
@@ -143,7 +143,7 @@
           "type": "select",
           "choices": {
             "Not Effective": "Not Effective",
-	    "Effective": "Effective",
+            "Effective": "Effective",
             "Very Effective": "Very Effective"
           },
           "defaultValue": "x",
@@ -156,7 +156,7 @@
           "min": 0,
           "max": 50,
           "required": false,
-	  "defaultValue": " "
+          "defaultValue": " "
         }
       ]
     }

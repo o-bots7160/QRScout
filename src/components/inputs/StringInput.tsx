@@ -1,5 +1,5 @@
 import React from 'react';
-import { inputSelector, useQRScoutState } from '../store/store';
+import { inputSelector, useQRScoutState } from '../../store/store';
 import BaseInputProps from './BaseInputProps';
 
 export interface StringInputProps extends BaseInputProps {
@@ -17,12 +17,15 @@ export default function StringInput(props: StringInputProps) {
   return (
     <textarea
       className="focus:shadow-outline w-full appearance-none break-words break-all rounded border leading-tight text-gray-700 shadow focus:outline-none dark:bg-gray-700 dark:text-white"
+      style="font-size: 150%; height: 50px; padding-left: 15px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;"
       disabled={data?.disabled}
       name={`${data?.title}_input`}
       id={`${data?.title}_input`}
       onChange={handleChange}
       defaultValue={data?.defaultValue || ''}
       value={data?.value || ''}
-    ></textarea>
+      maxlength={props.max}
+      minlength={props.min}
+    />
   );
 }

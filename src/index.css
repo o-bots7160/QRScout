@@ -4,6 +4,10 @@
 
 body {
   overscroll-behavior: contain;
+  user-select: none;
+}
+.button:active {
+    background-color: #ffbf00;
 }
 
 @font-face {
