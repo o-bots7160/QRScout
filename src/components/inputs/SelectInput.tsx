@@ -1,32 +1,71 @@
-import React from 'react';
-import BaseInputProps from './BaseInputProps';
+import { useEvent } from '@/hooks';
+import { inputSelector, updateValue, useQRScoutState } from '@/store/store';
+import { useCallback, useEffect, useState } from 'react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
+import { SelectInputData } from './BaseInputProps';
+import { ConfigurableInputProps } from './ConfigurableInput';
 
-export interface SelectInputProps extends BaseInputProps {
-  options: Record<string, string>;
-  defaultValue: string;
-}
+export default function SelectInput(props: ConfigurableInputProps) {
+  const data = useQRScoutState(
+    inputSelector<SelectInputData>(props.section, props.code),
+  );
 
-export default function SelectInput(data: SelectInputProps) {
-  function handleSelect(evt: React.ChangeEvent<HTMLSelectElement>) {
-    data.onChange(evt.currentTarget.value);
-    evt.preventDefault();
+  if (!data) {
+    return <div>Invalid input</div>;
+  }
+
+  const [value, setValue] = useState(data.defaultValue);
+
+  useEffect(() => {
+    updateValue(props.code, value);
+  }, [value]);
+
+  const resetState = useCallback((force = false) => {
+    if (!force && (data.preserveDataOnReset || props.preserveSection)) {
+      return;
+    }
+    setValue(data.defaultValue);
+  }, [data.defaultValue]);
+
+  useEvent('resetFields', resetState);
+  useEvent('forceResetFields', () => resetState(true) );
+
+  const handleSelect = useCallback((value: string) => {
+    setValue(value);
+    // TODO support multiselect again
+    // if (!data.multiSelect) {
+    //   data.onChange(value);
+    // } else {
+    //   const selectedOptions = Array.from(evt.currentTarget.selectedOptions).map(
+    //     o => o.value,
+    //   );
+    //   data.onChange(selectedOptions);
+    // }
+  }, []);
+
+  if (!data || !data?.choices) {
+    return <div>Invalid input</div>;
   }
   return (
-    <select
-      className="w-full rounded bg-white px-4 py-2 dark:bg-gray-700 dark:text-white"
-      style="font-size: 150%; height: 50px; padding-left: 15px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;"
-      name={data.title}
-      id={data.title}
-      onChange={handleSelect}
-      value={data.value}
-    >
-      {Object.keys(data.options).map(o => {
-        return (
-          <option key={o} value={o}>
-            {data.options[o]}
-          </option>
-        );
-      })}
-    </select>
+    <Select name={data.title} onValueChange={handleSelect} value={value}>
+      <SelectTrigger>
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent>
+        {Object.keys(data.choices).map(o => {
+          return (
+            <SelectItem key={o} value={o}>
+              {data.choices?.[o]}
+            </SelectItem>
+          );
+        })}
+      </SelectContent>
+    </Select>
   );
 }

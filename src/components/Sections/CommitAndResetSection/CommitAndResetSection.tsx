@@ -1,36 +1,31 @@
-import { useMemo } from 'preact/hooks';
+import { QRModal } from '@/components/QR';
+import { useMemo } from 'react';
 import { useQRScoutState } from '../../../store/store';
-import { CommitButton } from './CommitButton';
+import { Section } from '../../core/Section';
 import { ResetButton } from './ResetButton';
 
-export type CommitAndResetSectionProps = {
-  onCommit: () => void;
-};
-
-export function CommitAndResetSection({
-  onCommit,
-}: CommitAndResetSectionProps) {
+export function CommitAndResetSection() {
   const formData = useQRScoutState(state => state.formData);
-  const missingRequiredFields = useMemo(() => {
+  const fieldValues = useQRScoutState(state => state.fieldValues);
+
+  const requiredFields = useMemo(() => {
     return formData.sections
       .map(s => s.fields)
       .flat()
-      .filter(
-        f =>
-          f.required &&
-          (f.value === null || f.value === undefined || f.value === ``),
-      );
+      .filter(f => f.required)
+      .map(f => f.code);
   }, [formData]);
 
+  const missingRequiredFields = useMemo(() => {
+    return fieldValues
+      .filter(f => requiredFields.includes(f.code))
+      .some(f => f.value === undefined || f.value === '' || f.value === null);
+  }, [formData, fieldValues]);
+
   return (
-    <div className="mb-4 flex flex-col justify-center rounded bg-white py-2 shadow-md dark:bg-gray-600">
-      <CommitButton
-        disabled={missingRequiredFields.length > 0}
-        onClick={onCommit}
-      />
-      <br></br><br></br>
-      DON'T HIT RESET UNLESS THE QR CODE HAS BEEN SCANNED!!
+    <Section>
+      <QRModal disabled={missingRequiredFields} />
       <ResetButton />
-    </div>
+    </Section>
   );
 }

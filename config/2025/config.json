@@ -1,7 +1,9 @@
 {
   "$schema": "../schema.json",
   "title": "QRScout",
-  "page_title": "7160 O-BOTS Pre 2025",
+  "page_title": "O-BOTS",
+  "teamNumber": 7160,
+  "delimiter": "\t",
   "sections": [
     {
       "name": "Prematch",

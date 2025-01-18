@@ -1,55 +1,65 @@
-import { useMemo, useRef } from 'preact/hooks';
-import QRCode from 'qrcode.react';
-import { useOnClickOutside } from '../../hooks/useOnClickOutside';
+import { Copy, QrCode } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
+import { useMemo } from 'react';
 import { getFieldValue, useQRScoutState } from '../../store/store';
-import { Config } from '../inputs/BaseInputProps';
-import { CloseButton } from './CloseButton';
+import { Button } from '../ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogTitle,
+  DialogTrigger,
+} from '../ui/dialog';
 import { PreviewText } from './PreviewText';
 
 export interface QRModalProps {
-  show: boolean;
-  onDismiss: () => void;
-}
-
-export function getQRCodeData(formData: Config): string {
-  return formData.sections
-    .map(s => s.fields)
-    .flat()
-    .map(v => `${v.value}`.replace(/\n/g, ' '))
-    .join('\t');
+  disabled?: boolean;
 }
 
 export function QRModal(props: QRModalProps) {
-  const modalRef = useRef(null);
+  const fieldValues = useQRScoutState(state => state.fieldValues);
   const formData = useQRScoutState(state => state.formData);
-  useOnClickOutside(modalRef, props.onDismiss);
-
-  const title = `M#:${getFieldValue('matchNumber')} - T#:${getFieldValue(
-    'teamNumber',
+  const title = `${getFieldValue('robot')} - M${getFieldValue(
+    'matchNumber',
   )}`.toUpperCase();
 
-  const qrCodeData = useMemo(() => getQRCodeData(formData), [formData]);
+  const qrCodePreview = useMemo(
+    () => fieldValues.map(f => f.value).join(','),
+    [fieldValues],
+  );
+  const qrCodeData = useMemo(
+    () => fieldValues.map(f => f.value).join(formData.delimiter),
+    [fieldValues],
+  );
+  //Two seperate values are required- qrCodePreview is what is shown to the user beneath the QR code, qrCodeData is the actual data.
+
   return (
-    <>
-      {props.show && (
-        <>
-          <div
-            className="fixed inset-0 h-full w-full overflow-y-auto bg-gray-600 bg-opacity-50 dark:bg-opacity-70 backdrop-blur-sm "
-            id="my-modal"
-          />
-          <div
-            ref={modalRef}
-            className="fixed top-20 rounded-md bg-white border shadow-lg w-96"
-          >
-            <div className="flex flex-col items-center pt-8 ">
-              <CloseButton onClick={props.onDismiss} />
-              <QRCode className="m-2 mt-4" size={256} value={qrCodeData} />
-              <h1 className="text-3xl text-gray-800">{title}</h1>
-              <PreviewText data={qrCodeData} />
-            </div>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button disabled={props.disabled}>
+          <QrCode className="size-5" />
+          Commit
+        </Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogTitle className="text-3xl text-primary text-center font-rhr-ns tracking-wider ">
+          {title}
+        </DialogTitle>
+        <div className="flex flex-col items-center gap-6">
+          <div className="bg-white p-4 rounded-md">
+            <QRCodeSVG className="m-2 mt-4" size={256} value={qrCodeData} />
           </div>
-        </>
-      )}
-    </>
+          <PreviewText data={qrCodePreview} />
+        </div>
+        <DialogFooter>
+          <Button
+            variant="ghost"
+            onClick={() => navigator.clipboard.writeText(qrCodeData)}
+          >
+            <Copy className="size-4" /> Copy Data
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }

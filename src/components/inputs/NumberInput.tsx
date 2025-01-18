@@ -1,30 +1,68 @@
-import React from 'react';
-import BaseInputProps from './BaseInputProps';
+import { useEvent } from '@/hooks';
+import { inputSelector, updateValue, useQRScoutState } from '@/store/store';
+import React, { useCallback, useEffect } from 'react';
+import { Input } from '../ui/input';
+import { NumberInputData } from './BaseInputProps';
+import { ConfigurableInputProps } from './ConfigurableInput';
 
-export interface NumberInputProps extends BaseInputProps {
-  value?: number;
-  min?: number;
-  max?: number;
-  defaultValue?: number;
-}
+export default function NumberInput(props: ConfigurableInputProps) {
+  const data = useQRScoutState(
+    inputSelector<NumberInputData>(props.section, props.code),
+  );
 
-export default function NumberInput(data: NumberInputProps) {
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    e.preventDefault();
-    data.onChange(e.currentTarget.value);
+  if (!data) {
+    return <div>Invalid input</div>;
   }
 
-  console.log(data);
+  const [value, setValue] = React.useState<number | ''>(data.defaultValue);
+
+  const resetState = useCallback((force = false) => {
+    if (!force && (data.preserveDataOnReset || props.preserveSection)) {
+      return;
+    }
+    if (!force && data.autoIncrementOnReset) {
+      setValue(value ?? 0 + 1);
+    } else {
+      setValue(data.defaultValue);
+    }
+  }, [data.defaultValue]);
+
+  useEvent('resetFields', resetState);
+  useEvent('forceResetFields', () => resetState(true) );
+
+  useEffect(() => {
+    updateValue(props.code, value);
+  }, [value]);
+
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const parsed = Number(e.currentTarget.value);
+      if (e.currentTarget.value === '') {
+        setValue('');
+        return;
+      }
+      if (isNaN(parsed)) {
+        return;
+      }
+      if (data?.min && parsed < data.min) {
+        return;
+      }
+      if (data?.max && parsed > data.max) {
+        return;
+      }
+      setValue(parsed);
+      e.preventDefault();
+    },
+    [data],
+  );
 
   return (
-    <input
-      className="w-full rounded py-2 dark:bg-gray-700 dark:text-white"
-      style="font-size: 150%;"
+    <Input
       type="number"
+      value={value}
+      id={data.title}
       min={data.min}
       max={data.max}
-      value={data.value || data.defaultValue || ''}
-      id={data.title}
       onChange={handleChange}
     />
   );
