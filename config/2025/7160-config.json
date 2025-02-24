@@ -100,10 +100,10 @@
           "title": "Line Cross",
           "description": "Did the robot cross the line during autonomous.",
           "type": "select",
-          "required": false,
+          "required": true,
           "code": "YN",
           "formResetBehavior": "reset",
-          "defaultValue": "No",
+          "defaultValue": "",
           "choices": {
             "Yes": "Yes",
             "No": "No"
@@ -290,8 +290,9 @@
           "required": false,
           "code": "NTD",
           "formResetBehavior": "reset",
-          "defaultValue": "",
+          "defaultValue": "None",
           "choices": {
+            "None": "None",
             "No Show": "No Show",
             "Fell": "Tipped/Fell Over?",
             "Died": "Did it die at any point?",
