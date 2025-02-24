@@ -63,7 +63,7 @@
       "fields": [
         {
           "title": "Scouter Initials",
-          "description": "Enter the initials of the scouter.",
+          "description": "Enter the first, middle, and last name initials of the scouter.",
           "type": "text",
           "required": true,
           "code": "scouter",
@@ -98,6 +98,7 @@
       "fields": [
         {
           "title": "Line Cross",
+          "description": "Did the robot cross the line during autonomous.",
           "type": "select",
           "required": false,
           "code": "YN",
@@ -182,7 +183,7 @@
       "fields": [
         {
           "title": "Coral L1 Scored",
-          "description": "The number of level 1 coral scored during autonomous.",
+          "description": "The number of level 1 coral scored during teleop.",
           "type": "counter",
           "required": false,
           "code": "CLOT",
@@ -193,7 +194,7 @@
         },
         {
           "title": "Coral L2 Scored",
-          "description": "The number of level 2 coral scored during autonomous.",
+          "description": "The number of level 2 coral scored during teleop.",
           "type": "counter",
           "required": false,
           "code": "CLTT",
@@ -204,7 +205,7 @@
         },
         {
           "title": "Coral L3 Scored",
-          "description": "The number of level 3 coral scored during autonomous.",
+          "description": "The number of level 3 coral scored during teleop.",
           "type": "counter",
           "required": false,
           "code": "CLThT",
@@ -215,7 +216,7 @@
         },
         {
           "title": "Coral L4 Scored",
-          "description": "The number of level 4 coral scored during autonomous.",
+          "description": "The number of level 4 coral scored during teleop.",
           "type": "counter",
           "required": false,
           "code": "CLFT",
@@ -226,7 +227,7 @@
         },
         {
           "title": "Net Algae Scored",
-          "description": "The number of Algae scored in the barge during autonomous.",
+          "description": "The number of Algae scored in the barge during teleop.",
           "type": "counter",
           "required": false,
           "code": "BAST",
@@ -237,7 +238,7 @@
         },
         {
           "title": "Processor Algae Scored",
-          "description": "The number of Algae scored in the processor during autonomous.",
+          "description": "The number of Algae scored in the processor during teleop.",
           "type": "counter",
           "required": false,
           "code": "PAST",
@@ -253,6 +254,7 @@
       "fields": [
         {
           "title": "End Position",
+          "description": "Robot was out of barge, parked in barge, hung on shallow (high) cage, or hung on deep (low) cage.",
           "type": "select",
           "required": true,
           "code": "epo",
@@ -267,6 +269,7 @@
         },
         {
           "title": "Pickup Location",
+          "description": "Does the robot pickup pieces from the coral station, ground(coral and/or algae), or both.",
           "type": "select",
           "required": false,
           "code": "NGCB",
@@ -282,6 +285,7 @@
         },
         {
           "title": "Robot Problems",
+          "description": "(Choose a selection if any applied to the robot during the match) Died equals robot's blinking light turned solid, red/yellow card equals robot was the cause of a red or yellow card.",
           "type": "select",
           "required": false,
           "code": "NTD",
@@ -290,19 +294,21 @@
           "choices": {
             "No Show": "No Show",
             "Fell": "Tipped/Fell Over?",
-            "Died": "Did it die at any point?"
+            "Died": "Did it die at any point?",
+            "Card": "Did they aquire a red/yellow card?"
           },
           "multiSelect": true
         },
         {
           "title": "Comments",
+          "description": "Any extra notes such as a part falling off, excessive penalties incured, etc.",
           "type": "text",
           "required": false,
           "code": "co",
           "formResetBehavior": "reset",
-          "defaultValue": "",
+          "defaultValue": ".",
           "min": 0,
-          "max": 50
+          "max": 3000
         }
       ]
     }
